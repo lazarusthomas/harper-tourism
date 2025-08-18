@@ -1,1 +1,14 @@
-ECHO is on.
+{% extends "base.html" %}
+{% block content %}
+<h2>Tourist Gallery</h2>
+<div class="gallery">
+    <img src="{{ url_for('static', filename='images/beach.jpg') }}" alt="Beach">
+    <a href="{{ url_for('static', filename='images/beach.jpg') }}" download>Download</a>
+
+    <img src="{{ url_for('static', filename='images/lighthouse.jpg') }}" alt="Lighthouse">
+    <a href="{{ url_for('static', filename='images/lighthouse.jpg') }}" download>Download</a>
+
+    <img src="{{ url_for('static', filename='images/market.jpg') }}" alt="Market">
+    <a href="{{ url_for('static', filename='images/market.jpg') }}" download>Download</a>
+</div>
+{% endblock %}
