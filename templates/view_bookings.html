@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Visitor Bookings</h2>
+
+{% if bookings %}
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Destination</th>
+            <th>Date</th>
+        </tr>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.name }}</td>
+            <td>{{ booking.email }}</td>
+            <td>{{ booking.phone }}</td>
+            <td>{{ booking.destination }}</td>
+            <td>{{ booking.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No bookings yet.</p>
+{% endif %}
+{% endblock %}
