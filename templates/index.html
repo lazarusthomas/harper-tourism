@@ -1,5 +1,219 @@
 {% extends "base.html" %}
+{% block title %}Discover Harper - Home{% endblock %}
 {% block content %}
-<h2>Discover Harper City</h2>
-<p>Explore beautiful tourist attractions in Harper District, Maryland County.</p>
+
+<!-- Ensure Bootstrap and AOS are included in base.html or here -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+    /* Global Styles */
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+    .hero-section .carousel-item {
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+    .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+    .hero-text {
+        position: relative;
+        z-index: 2;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .hero-button {
+        background: #ffd700; /* Golden yellow */
+        color: #1a3c34; /* Dark teal */
+        border: none;
+        padding: 0.8rem 2rem;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+    .hero-button:hover {
+        background: #ffaa00;
+    }
+    .search-bar {
+        max-width: 500px;
+        margin: 2rem auto;
+        z-index: 2;
+    }
+    .search-bar input, .search-bar button {
+        border-radius: 25px;
+    }
+
+    /* About Section */
+    .about-section {
+        background: linear-gradient(to right, #e6f3fa, #b3e0ff); /* Coastal blue gradient */
+        padding: 4rem 0;
+    }
+    .about-section h2 {
+        color: #1a3c34;
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+    .about-carousel .carousel-item img {
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .about-carousel .carousel-caption {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 5px;
+        padding: 1rem;
+    }
+    .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero-section .display-2 {
+            font-size: 2.5rem;
+        }
+        .hero-section .lead {
+            font-size: 1rem;
+        }
+        .about-carousel .carousel-item img {
+            height: 200px;
+        }
+    }
+</style>
+
+<!-- Hero Section with Carousel -->
+<section class="hero-section">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url('{{ url_for('static', filename='images/lighthouse.jpg') }}');">
+                <div class="d-flex flex-column justify-content-center align-items-center text-center text-white h-100">
+                    <div class="hero-text" data-aos="fade-down" data-aos-duration="1500">
+                        <h1 class="display-2 fw-bold">Discover Harper</h1>
+                        <p class="lead fs-3">The Hidden Gem of Liberia’s Coastline</p>
+                    </div>
+                    <a href="{{ url_for('booking') }}" class="btn hero-button btn-lg mt-3 shadow" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">Book Your Adventure</a>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('{{ url_for('static', filename='images/harper2.jpg') }}');">
+                <div class="d-flex flex-column justify-content-center align-items-center text-center text-white h-100">
+                    <div class="hero-text" data-aos="fade-down" data-aos-duration="1500">
+                        <h1 class="display-2 fw-bold">Explore Harper’s Beaches</h1>
+                        <p class="lead fs-3">Relax in Paradise</p>
+                    </div>
+                    <a href="{{ url_for('booking') }}" class="btn hero-button btn-lg mt-3 shadow" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">Plan Your Trip</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- Search Bar -->
+    <div class="search-bar" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1000">
+        <form class="d-flex" action="{{ url_for('gallery') }}">
+            <input class="form-control me-2" type="search" placeholder="Search Destinations" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+    </div>
+</section>
+
+<!-- About Section with Carousel -->
+<div class="container about-section text-center">
+    <h2 data-aos="fade-up">Why Visit Harper?</h2>
+    <div id="aboutCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-12 col-md-6 d-flex">
+                        <div class="about-card flex-fill" data-aos="fade-right">
+                            <img src="{{ url_for('static', filename='images/capture2.jpg') }}" class="card-img-top" alt="Harper Beaches">
+                            <div class="card-body">
+                                <h4>Beautiful Beaches</h4>
+                                <p>Relax along golden shores and enjoy breathtaking sunsets in Harper.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 d-flex">
+                        <div class="about-card flex-fill" data-aos="fade-left">
+                            <img src="{{ url_for('static', filename='images/culture.jpg') }}" class="card-img-top" alt="Harper Culture">
+                            <div class="card-body">
+                                <h4>Rich Culture</h4>
+                                <p>Experience traditional music, dances, and authentic Liberian cuisine.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-12 col-md-6 d-flex">
+                        <div class="about-card flex-fill" data-aos="fade-right">
+                            <img src="{{ url_for('static', filename='images/tubmanbeach.jpg') }}" class="card-img-top" alt="Harper Adventures">
+                            <div class="card-body">
+                                <h4>Adventure Awaits</h4>
+                                <p>Explore hidden trails, historical landmarks, and local villages.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 d-flex">
+                        <div class="about-card flex-fill" data-aos="fade-left">
+                            <img src="{{ url_for('static', filename='images/capture1.png') }}" class="card-img-top" alt="Harper Cuisine">
+                            <div class="card-body">
+                                <h4>Sea Cruise</h4>
+                                <p>Relax on the open waters, enjoy breathtaking views, and make memories that last a lifetime.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <a href="{{ url_for('gallery') }}" class="btn btn-outline-primary btn-lg mt-5" data-aos="zoom-in">Explore More Destinations</a>
+</div>
+
+
+
+<!-- Include Bootstrap JS and AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        once: true,
+        duration: 1000
+    });
+</script>
+
 {% endblock %}

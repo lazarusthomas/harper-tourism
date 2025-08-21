@@ -1,14 +1,104 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Tourist Gallery</h2>
-<div class="gallery">
-    <img src="{{ url_for('static', filename='images/beach.jpg') }}" alt="Beach">
-    <a href="{{ url_for('static', filename='images/beach.jpg') }}" download>Download</a>
 
-    <img src="{{ url_for('static', filename='images/lighthouse.jpg') }}" alt="Lighthouse">
-    <a href="{{ url_for('static', filename='images/lighthouse.jpg') }}" download>Download</a>
+<!-- Page-specific styles -->
+<style>
+    body {
+        background-color: #f4f4f9; /* soft light background for gallery page */
+    }
+    .card img {
+        height: 250px;           /* fix image height */
+        object-fit: cover;       /* crop nicely */
+    }
+</style>
 
-    <img src="{{ url_for('static', filename='images/market.jpg') }}" alt="Market">
-    <a href="{{ url_for('static', filename='images/market.jpg') }}" download>Download</a>
+<div class="container my-5">
+    <h2 class="text-center mb-4">Tourist Gallery</h2>
+    <div class="row g-4">
+
+        <!-- Image 1 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='images/culture.jpg') }}" class="card-img-top" alt="Beach">
+                <div class="card-body text-center">
+                    <p class="card-text"><strong>Harper Central Market</strong></p>
+                    <a href="{{ url_for('static', filename='images/culture.jpg') }}" download class="btn btn-primary">Download</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='images/capture1.png') }}" class="card-img-top" alt="Sea Cruise">
+                <div class="card-body text-center">
+                    <p class="card-text"><strong>Sea Cruise</strong></p>
+                    <a href="{{ url_for('static', filename='images/capture1.png') }}" download class="btn btn-primary">Download</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='images/adventure.jpg') }}" class="card-img-top" alt="Up Cape">
+                <div class="card-body text-center">
+                    <p class="card-text"><strong>Up Cape</strong></p>
+                    <a href="{{ url_for('static', filename='images/adventure.jpg') }}" download class="btn btn-primary">Download</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image 4 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='images/tubmanbeach.jpg') }}" class="card-img-top" alt="Tubman Beach">
+                <div class="card-body text-center">
+                    <p class="card-text"><strong>Tubman Beach</strong></p>
+                    <a href="{{ url_for('static', filename='images/tubmanbeach.jpg') }}" download class="btn btn-primary">Download</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image 5 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='images/capture4.jpg') }}" class="card-img-top" alt="Port">
+                <div class="card-body text-center">
+                    <p class="card-text"><strong>Fish Town Beach</strong></p>
+                    <a href="{{ url_for('static', filename='images/capture4.jpg') }}" download class="btn btn-primary">Download</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image 6 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='images/port.jpg') }}" class="card-img-top" alt="Port">
+                <div class="card-body text-center">
+                    <p class="card-text"><strong>Port of Harper</strong></p>
+                    <a href="{{ url_for('static', filename='images/port.jpg') }}" download class="btn btn-primary">Download</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image 7 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="{{ url_for('static', filename='images/lighthouse.jpg') }}" class="card-img-top" alt="Light House">
+                <div class="card-body text-center">
+                    <p class="card-text"><strong>Light House</strong></p>
+                    <a href="{{ url_for('static', filename='images/lighthouse.jpg') }}" download class="btn btn-primary">Download</a>
+                </div>
+            </div>
+
+            
+
+
+
+           
+
+    </div>
 </div>
+
 {% endblock %}

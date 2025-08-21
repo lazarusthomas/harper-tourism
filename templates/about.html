@@ -1,12 +1,80 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>About Us</h2>
-<p>
-    Welcome to Discover Harper!  
-    We are dedicated to showcasing the beauty of Harper and helping visitors explore our culture, destinations, and history.  
-</p>
-<p>
-    Our mission is to make your visit memorable by connecting you with the best experiences Harper has to offer.  
-</p>
+<!-- Page-specific styles -->
+<style>
+    body {
+        background-color: #f4f8fb; /* soft light background */
+    }
+    .about-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                    url("{{ url_for('static', filename='images/harper-view.jpg') }}") no-repeat center center/cover;
+        color: white;
+        padding: 100px 20px;
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 40px;
+    }
+    .about-section h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    .about-cards .card {
+        border: none;
+        border-radius: 12px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .about-cards .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<!-- Hero Section -->
+<div class="about-section">
+    <h2>About Us</h2>
+    <p class="lead">
+        Discover Harper is dedicated to showcasing the beauty, culture, and history of Harper.
+    </p>
+</div>
+
+<!-- Content Section -->
+<div class="container about-cards">
+    <div class="row g-4">
+
+        <!-- Mission -->
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4 h-100">
+                <h4 class="card-title text-primary">🌍 Our Mission</h4>
+                <p class="card-text">
+                    Our mission is to make your visit memorable by connecting you with the best
+                    experiences Harper has to offer — from breathtaking beaches to rich cultural traditions.
+                </p>
+            </div>
+        </div>
+
+        <!-- Vision -->
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4 h-100">
+                <h4 class="card-title text-success">✨ Our Vision</h4>
+                <p class="card-text">
+                    We envision Harper as a top tourist destination in Liberia, where visitors from all walks
+                    of life can experience warmth, adventure, and unforgettable moments.
+                </p>
+            </div>
+        </div>
+
+        <!-- What We Offer -->
+        <div class="col-md-12">
+            <div class="card shadow-sm p-4">
+                <h4 class="card-title text-info">💡 What We Offer</h4>
+                <p class="card-text">
+                    From travel guides to cultural insights, we provide resources to help you explore Harper 
+                    with ease. Whether you are here for leisure, adventure, or learning, we are here to guide you.  
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock %}

@@ -1,12 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Booking Form</h2>
-<form method="POST">
-    <label>Name:</label><input type="text" name="name" required><br>
-    <label>Email:</label><input type="email" name="email" required><br>
-    <label>Phone:</label><input type="text" name="phone" required><br>
-    <label>Destination:</label><input type="text" name="destination" required><br>
-    <label>Date of Visit:</label><input type="date" name="date" required>
-    <button type="submit">Submit</button>
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4 rounded-3">
+                <h2 class="text-center mb-4 text-warning">Booking Form</h2>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Name:</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email:</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Phone:</label>
+                        <input type="text" name="phone" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Destination:</label>
+                        <input type="text" name="destination" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Date of Visit:</label>
+                        <input type="date" name="date" class="form-control" required>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-warning w-100">Submit Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+

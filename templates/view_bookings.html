@@ -1,27 +1,72 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Visitor Bookings</h2>
 
-{% if bookings %}
-    <table border="1" cellpadding="10">
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Destination</th>
-            <th>Date</th>
-        </tr>
-        {% for booking in bookings %}
-        <tr>
-            <td>{{ booking.name }}</td>
-            <td>{{ booking.email }}</td>
-            <td>{{ booking.phone }}</td>
-            <td>{{ booking.destination }}</td>
-            <td>{{ booking.date }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-{% else %}
-    <p>No bookings yet.</p>
-{% endif %}
+<style>
+    body {
+        background-color: #f0f8ff; /* Soft AliceBlue background */
+    }
+
+    .dashboard-header {
+        background: linear-gradient(to right, #1f1c2c, #928dab);
+        color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .table thead {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .table tbody tr:hover {
+        background-color: #e6f2ff; /* Slightly highlighted hover for rows */
+    }
+
+    .table-responsive {
+        background-color: #ffffff; /* White background for table container */
+        padding: 15px;
+        border-radius: 12px;
+    }
+</style>
+
+<div class="container my-5">
+    <!-- Dashboard header -->
+    <div class="dashboard-header">
+        <h2>📋 Visitor Bookings</h2>
+        <p>Manage and review all customer bookings</p>
+    </div>
+
+    {% if bookings %}
+        <div class="table-responsive shadow rounded">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="text-center">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Destination</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.name }}</td>
+                        <td>{{ booking.email }}</td>
+                        <td>{{ booking.phone }}</td>
+                        <td>{{ booking.destination }}</td>
+                        <td>{{ booking.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center">
+            No bookings yet.
+        </div>
+    {% endif %}
+</div>
 {% endblock %}
